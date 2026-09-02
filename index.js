@@ -75,4 +75,6 @@ app.use('/', clientRoutes);
 
 
 
-app.listen(config.port, () => winston.info('App is listening on http://localhost:' + config.port));
+app.listen(config.port, '0.0.0.0', () => {
+    console.log(`Listening on port ${config.port}`);
+});

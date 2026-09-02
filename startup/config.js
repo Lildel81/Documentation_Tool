@@ -1,15 +1,15 @@
 const dotenv = require('dotenv');
-const assert = require('assert');
 
 dotenv.config();
 
-const{PORT, HOST, HOST_URL} = process.env;
+const port = process.env.PORT || 30000;
 
-assert(PORT, 'PORT is required');
-assert(HOST, 'HOST is required');
+const host = process.env.HOST || '0.0.0.0';
+
+const url = process.env.HOST_URL || '';
 
 module.exports = {
-    port: PORT,
-    host: HOST,
-    url: HOST_URL
-}
+    port,
+    host,
+    url
+};
