@@ -1,0 +1,513 @@
+<div class="container-fluid py-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <div>
+            <h1 class="mb-1">
+                Edit Record
+            </h1>
+
+            <p class="text-muted mb-0">
+                <%= record.title %>
+            </p>
+        </div>
+
+        <a
+            href="/records/<%= record._id %>"
+            class="btn btn-outline-light"
+        >
+            ← Cancel
+        </a>
+
+    </div>
+
+
+    <div class="card shadow-lg">
+
+        <div class="card-body p-4">
+
+            <form
+                action="/records/<%= record._id %>?_method=PATCH"
+                method="POST"
+            >
+
+                <!-- Title -->
+                <div class="mb-4">
+
+                    <label
+                        for="title"
+                        class="form-label"
+                    >
+                        Investigation / Case Title
+                    </label>
+
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="title"
+                        name="title"
+                        value="<%= record.title %>"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="row g-5">
+
+                    <!-- LEFT COLUMN -->
+                    <div class="col-lg-7">
+
+                        <h3 class="border-bottom pb-2 mb-4">
+                            Investigative Documentation
+                        </h3>
+
+
+                        <div class="row">
+
+                            <div class="col-md-6 mb-3">
+
+                                <label
+                                    for="requestReceived"
+                                    class="form-label"
+                                >
+                                    Request Received
+                                </label>
+
+                                <input
+                                    type="date"
+                                    class="form-control"
+                                    id="requestReceived"
+                                    name="requestReceived"
+                                    value="<%= record.requestReceived %>"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="col-md-6 mb-3">
+
+                                <label
+                                    for="started"
+                                    class="form-label"
+                                >
+                                    Started
+                                </label>
+
+                                <input
+                                    type="date"
+                                    class="form-control"
+                                    id="started"
+                                    name="started"
+                                    value="<%= record.started %>"
+                                    required
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="mb-3">
+
+                            <label
+                                for="requestingAgency"
+                                class="form-label"
+                            >
+                                Requesting Agency
+                            </label>
+
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="requestingAgency"
+                                name="requestingAgency"
+                                value="<%= record.requestingAgency || '' %>"
+                            >
+
+                        </div>
+
+
+                        <div class="mb-3">
+
+                            <label
+                                for="typeOfInvestigation"
+                                class="form-label"
+                            >
+                                Type of Investigation
+                            </label>
+
+                            <select
+                                class="form-select"
+                                id="typeOfInvestigation"
+                                name="typeOfInvestigation"
+                            >
+
+                                <% const investigationTypes = [
+                                    'Crypto',
+                                    'FinCEN',
+                                    'OSINT',
+                                    'IP Tracking',
+                                    'Fraud',
+                                    'Data Breach',
+                                    'Social Media',
+                                    'Dark Web'
+                                ]; %>
+
+                                <% investigationTypes.forEach(type => { %>
+
+                                    <option
+                                        value="<%= type %>"
+                                        <%= record.typeOfInvestigation === type ? 'selected' : '' %>
+                                    >
+                                        <%= type %>
+                                    </option>
+
+                                <% }); %>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="mb-3">
+
+                            <label
+                                for="hoursSpent"
+                                class="form-label"
+                            >
+                                Hours Spent
+                            </label>
+
+                            <input
+                                type="number"
+                                step="0.25"
+                                min="0"
+                                class="form-control"
+                                id="hoursSpent"
+                                name="hoursSpent"
+                                value="<%= record.hoursSpent %>"
+                            >
+
+                        </div>
+
+
+                        <div class="mb-3">
+
+                            <label
+                                for="actionTaken"
+                                class="form-label"
+                            >
+                                Actions Taken
+                            </label>
+
+                            <% const actions = [
+                                'Tracked',
+                                'Discovered',
+                                'Connected',
+                                'Identified',
+                                'Corroborated',
+                                'Analyzed',
+                                'Attributed',
+                                'Exhausted'
+                            ]; %>
+
+                            <select
+                                class="form-select"
+                                id="actionTaken"
+                                name="actionTaken"
+                                multiple
+                                size="8"
+                            >
+
+                                <% actions.forEach(action => { %>
+
+                                    <option
+                                        value="<%= action %>"
+                                        <%= record.actionTaken &&
+                                            record.actionTaken.includes(action)
+                                            ? 'selected'
+                                            : '' %>
+                                    >
+                                        <%= action %>
+                                    </option>
+
+                                <% }); %>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="mb-3">
+
+                            <label
+                                for="softwareUsed"
+                                class="form-label"
+                            >
+                                Software Used
+                            </label>
+
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="softwareUsed"
+                                name="softwareUsed"
+                                value="<%= record.softwareUsed %>"
+                            >
+
+                        </div>
+
+
+                        <div class="mb-3">
+
+                            <label class="form-label d-block">
+                                License Status
+                            </label>
+
+                            <% const licenseOptions = [
+                                'Free',
+                                'Trial / Pilot',
+                                'License Pending',
+                                'Licensed'
+                            ]; %>
+
+                            <% licenseOptions.forEach(option => { %>
+
+                                <div class="form-check form-check-inline">
+
+                                    <input
+                                        class="form-check-input"
+                                        type="radio"
+                                        name="paidOrFree"
+                                        value="<%= option %>"
+                                        <%= record.paidOrFree === option ? 'checked' : '' %>
+                                    >
+
+                                    <label class="form-check-label">
+                                        <%= option %>
+                                    </label>
+
+                                </div>
+
+                            <% }); %>
+
+                        </div>
+
+
+                        <div class="mb-3">
+
+                            <label
+                                for="softwareVersion"
+                                class="form-label"
+                            >
+                                Software Version
+                            </label>
+
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="softwareVersion"
+                                name="softwareVersion"
+                                value="<%= record.softwareVersion || '' %>"
+                            >
+
+                        </div>
+
+
+                        <div class="mb-3">
+
+                            <label
+                                for="notes"
+                                class="form-label"
+                            >
+                                Notes
+                            </label>
+
+                            <textarea
+                                class="form-control"
+                                id="notes"
+                                name="notes"
+                                rows="6"
+                            ><%= record.notes || '' %></textarea>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- RIGHT COLUMN -->
+                    <div class="col-lg-5">
+
+                        <h3 class="border-bottom pb-2 mb-4">
+                            Outcome
+                        </h3>
+
+
+                        <div class="mb-4">
+
+                            <label class="form-label d-block">
+                                Report Complete
+                            </label>
+
+                            <div class="form-check form-check-inline">
+
+                                <input
+                                    class="form-check-input"
+                                    type="radio"
+                                    name="reportComplete"
+                                    value="Yes"
+                                    <%= record.reportComplete === 'Yes' ? 'checked' : '' %>
+                                >
+
+                                <label class="form-check-label">
+                                    Yes
+                                </label>
+
+                            </div>
+
+
+                            <div class="form-check form-check-inline">
+
+                                <input
+                                    class="form-check-input"
+                                    type="radio"
+                                    name="reportComplete"
+                                    value="No"
+                                    <%= record.reportComplete === 'No' ? 'checked' : '' %>
+                                >
+
+                                <label class="form-check-label">
+                                    No
+                                </label>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="mb-4">
+
+                            <label class="form-label d-block">
+                                Provided to Investigator
+                            </label>
+
+                            <div class="form-check form-check-inline">
+
+                                <input
+                                    class="form-check-input"
+                                    type="radio"
+                                    name="providedToInvestigator"
+                                    value="Yes"
+                                    <%= record.providedToInvestigator === 'Yes' ? 'checked' : '' %>
+                                >
+
+                                <label class="form-check-label">
+                                    Yes
+                                </label>
+
+                            </div>
+
+
+                            <div class="form-check form-check-inline">
+
+                                <input
+                                    class="form-check-input"
+                                    type="radio"
+                                    name="providedToInvestigator"
+                                    value="No"
+                                    <%= record.providedToInvestigator === 'No' ? 'checked' : '' %>
+                                >
+
+                                <label class="form-check-label">
+                                    No
+                                </label>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="mb-3">
+
+                            <label
+                                for="providedHow"
+                                class="form-label"
+                            >
+                                Provided How
+                            </label>
+
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="providedHow"
+                                name="providedHow"
+                                value="<%= record.providedHow || '' %>"
+                            >
+
+                        </div>
+
+
+                        <div class="mb-3">
+
+                            <label
+                                for="evidenceStored"
+                                class="form-label"
+                            >
+                                Evidence Stored
+                            </label>
+
+                            <textarea
+                                class="form-control"
+                                id="evidenceStored"
+                                name="evidenceStored"
+                                rows="5"
+                            ><%= record.evidenceStored || '' %></textarea>
+
+                        </div>
+
+
+                        <div class="mb-3">
+
+                            <label
+                                for="results"
+                                class="form-label"
+                            >
+                                Results
+                            </label>
+
+                            <textarea
+                                class="form-control"
+                                id="results"
+                                name="results"
+                                rows="8"
+                            ><%= record.results || '' %></textarea>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="d-flex justify-content-end border-top pt-4 mt-4"
+                >
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary btn-lg px-5"
+                    >
+                        Save Changes
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,440 @@
+<div class="container-fluid py-4">
+
+    <!-- Page Header -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h1 class="mb-1">Forensic Documentation</h1>
+            <p class="text-muted mb-0">
+                Document investigative work and outcomes
+            </p>
+        </div>
+
+        <a href="/records" class="btn btn-outline-light">
+            View Records
+        </a>
+    </div>
+
+
+    <!-- Main Form Card -->
+    <div class="card shadow-lg">
+        <div class="card-body p-4">
+
+            <form action="/clients" method="POST">
+
+                <!-- Investigation Title -->
+                <div class="mb-4">
+                    <label for="title" class="form-label">
+                        Investigation / Case Title
+                    </label>
+
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="title"
+                        name="title"
+                        placeholder="Enter investigation or case title"
+                    >
+                </div>
+
+
+                <div class="row g-5">
+
+                    <!-- LEFT COLUMN -->
+                    <div class="col-lg-7">
+
+                        <h3 class="border-bottom pb-2 mb-4">
+                            Investigative Documentation
+                        </h3>
+
+
+                        <!-- Dates -->
+                        <div class="row">
+
+                            <div class="col-md-6 mb-3">
+                                <label for="requestReceived" class="form-label">
+                                    Request Received
+                                </label>
+
+                                <input
+                                    type="date"
+                                    class="form-control"
+                                    id="requestReceived"
+                                    name="requestReceived"
+                                >
+                            </div>
+
+
+                            <div class="col-md-6 mb-3">
+                                <label for="started" class="form-label">
+                                    Started
+                                </label>
+
+                                <input
+                                    type="date"
+                                    class="form-control"
+                                    id="started"
+                                    name="started"
+                                >
+                            </div>
+
+                        </div>
+
+
+                        <!-- Requesting Agency -->
+                        <div class="mb-3">
+                            <label for="requestingAgency" class="form-label">
+                                Requesting Agency
+                            </label>
+
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="requestingAgency"
+                                name="requestingAgency"
+                            >
+                        </div>
+
+
+                        <!-- Investigation Type -->
+                        <div class="mb-3">
+                            <label for="typeOfInvestigation" class="form-label">
+                                Type of Investigation
+                            </label>
+
+                            <select
+                                class="form-select"
+                                id="typeOfInvestigation"
+                                name="typeOfInvestigation"
+                            >
+                                <option value="" selected disabled>
+                                    Select investigation type
+                                </option>
+
+                                <option value="Crypto">Crypto</option>
+                                <option value="FinCEN">FinCEN</option>
+                                <option value="OSINT">OSINT</option>
+                                <option value="IP Tracking">IP Tracking</option>
+                                <option value="Fraud">Fraud</option>
+                                <option value="Data Breach">Data Breach</option>
+                                <option value="Social Media">Social Media</option>
+                                <option value="Dark Web">Dark Web</option>
+                            </select>
+                        </div>
+
+
+                        <!-- Hours -->
+                        <div class="mb-3">
+                            <label for="hoursSpent" class="form-label">
+                                Hours Spent
+                            </label>
+
+                            <input
+                                type="number"
+                                step="0.25"
+                                min="0"
+                                class="form-control"
+                                id="hoursSpent"
+                                name="hoursSpent"
+                            >
+                        </div>
+
+
+                        <!-- Actions Taken -->
+                        <div class="mb-3">
+                            <label for="actionTaken" class="form-label">
+                                Actions Taken
+                            </label>
+
+                            <select
+                                class="form-select"
+                                id="actionTaken"
+                                name="actionTaken"
+                                multiple
+                                size="5"
+                            >
+                                <option value="Tracked">Tracked</option>
+                                <option value="Discovered">Discovered</option>
+                                <option value="Connected">Connected</option>
+                                <option value="Identified">Identified</option>
+                                <option value="Corroborated">Corroborated</option>
+                                <option value="Analyzed">Analyzed</option>
+                                <option value="Attributed">Attributed</option>
+                                <option value="Exhausted">Exhausted</option>
+                            </select>
+
+                            <div class="form-text">
+                                Hold Ctrl to select multiple options.
+                            </div>
+                        </div>
+
+
+                        <!-- Software Used -->
+                        <div class="mb-3">
+                            <label for="softwareUsed" class="form-label">
+                                Software Used
+                            </label>
+
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="softwareUsed"
+                                name="softwareUsed"
+                            >
+                        </div>
+
+
+                        <!-- License Status -->
+                        <div class="mb-4">
+
+                            <label class="form-label d-block">
+                                Software License Status
+                            </label>
+
+                            <div class="d-flex flex-wrap gap-4">
+
+                                <div class="form-check">
+                                    <input
+                                        class="form-check-input"
+                                        type="radio"
+                                        name="paidOrFree"
+                                        id="free"
+                                        value="Free"
+                                    >
+
+                                    <label class="form-check-label" for="free">
+                                        Free
+                                    </label>
+                                </div>
+
+
+                                <div class="form-check">
+                                    <input
+                                        class="form-check-input"
+                                        type="radio"
+                                        name="paidOrFree"
+                                        id="trial"
+                                        value="Trial / Pilot"
+                                    >
+
+                                    <label class="form-check-label" for="trial">
+                                        Trial / Pilot
+                                    </label>
+                                </div>
+
+
+                                <div class="form-check">
+                                    <input
+                                        class="form-check-input"
+                                        type="radio"
+                                        name="paidOrFree"
+                                        id="pending"
+                                        value="License Pending"
+                                    >
+
+                                    <label class="form-check-label" for="pending">
+                                        License Pending
+                                    </label>
+                                </div>
+
+
+                                <div class="form-check">
+                                    <input
+                                        class="form-check-input"
+                                        type="radio"
+                                        name="paidOrFree"
+                                        id="licensed"
+                                        value="Licensed"
+                                    >
+
+                                    <label class="form-check-label" for="licensed">
+                                        Licensed
+                                    </label>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                        <!-- Version -->
+                        <div class="mb-3">
+                            <label for="softwareVersion" class="form-label">
+                                Software Version
+                            </label>
+
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="softwareVersion"
+                                name="softwareVersion"
+                            >
+                        </div>
+
+
+                        <!-- Notes -->
+                        <div class="mb-3">
+                            <label for="notes" class="form-label">
+                                Notes
+                            </label>
+
+                            <textarea
+                                class="form-control"
+                                id="notes"
+                                name="notes"
+                                rows="6"
+                            ></textarea>
+                        </div>
+
+                    </div>
+
+
+                    <!-- RIGHT COLUMN -->
+                    <div class="col-lg-5">
+
+                        <h3 class="border-bottom pb-2 mb-4">
+                            Outcome
+                        </h3>
+
+
+                        <!-- Report Complete -->
+                        <div class="mb-4">
+
+                            <label class="form-label d-block">
+                                Report Complete
+                            </label>
+
+                            <div class="form-check form-check-inline">
+                                <input
+                                    class="form-check-input"
+                                    type="radio"
+                                    name="reportComplete"
+                                    id="reportYes"
+                                    value="Yes"
+                                >
+
+                                <label class="form-check-label" for="reportYes">
+                                    Yes
+                                </label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input
+                                    class="form-check-input"
+                                    type="radio"
+                                    name="reportComplete"
+                                    id="reportNo"
+                                    value="No"
+                                >
+
+                                <label class="form-check-label" for="reportNo">
+                                    No
+                                </label>
+                            </div>
+
+                        </div>
+
+
+                        <!-- Provided -->
+                        <div class="mb-4">
+
+                            <label class="form-label d-block">
+                                Provided to Investigator
+                            </label>
+
+                            <div class="form-check form-check-inline">
+                                <input
+                                    class="form-check-input"
+                                    type="radio"
+                                    name="providedToInvestigator"
+                                    id="providedYes"
+                                    value="Yes"
+                                >
+
+                                <label class="form-check-label" for="providedYes">
+                                    Yes
+                                </label>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <input
+                                    class="form-check-input"
+                                    type="radio"
+                                    name="providedToInvestigator"
+                                    id="providedNo"
+                                    value="No"
+                                >
+
+                                <label class="form-check-label" for="providedNo">
+                                    No
+                                </label>
+                            </div>
+
+                        </div>
+
+
+                        <!-- Provided How -->
+                        <div class="mb-3" id="providedHowContainer">
+                            <label for="providedHow" class="form-label">
+                                Provided How
+                            </label>
+
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="providedHow"
+                                name="providedHow"
+                            >
+                        </div>
+
+
+                        <!-- Evidence Stored -->
+                        <div class="mb-3">
+                            <label for="evidenceStored" class="form-label">
+                                Evidence / Documentation Stored
+                            </label>
+
+                            <textarea
+                                class="form-control"
+                                id="evidenceStored"
+                                name="evidenceStored"
+                                rows="4"
+                            ></textarea>
+                        </div>
+
+
+                        <!-- Results -->
+                        <div class="mb-3">
+                            <label for="results" class="form-label">
+                                Results
+                            </label>
+
+                            <textarea
+                                class="form-control"
+                                id="results"
+                                name="results"
+                                rows="9"
+                            ></textarea>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Submit -->
+                <div class="d-flex justify-content-end border-top pt-4 mt-4">
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary btn-lg px-5"
+                    >
+                        Save Documentation
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+
+</div>

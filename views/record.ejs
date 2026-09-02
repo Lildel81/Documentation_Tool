@@ -1,0 +1,402 @@
+<div class="container-fluid py-4">
+
+    <!-- Header -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <div>
+            <h1 class="mb-1">
+                <%= record.title %>
+            </h1>
+
+            <p class="text-muted mb-0">
+                Forensic Record
+            </p>
+        </div>
+
+        <a href="/records" class="btn btn-outline-light">
+            ← Back to Records
+        </a>
+
+    </div>
+
+
+    <!-- Main Record Card -->
+    <div class="card shadow-lg">
+
+        <div class="card-body p-4">
+
+            <div class="row g-5">
+
+                <!-- LEFT COLUMN -->
+                <div class="col-lg-7">
+
+                    <h3 class="border-bottom pb-2 mb-4">
+                        Investigative Documentation
+                    </h3>
+
+
+                    <div class="row mb-3">
+
+                        <div class="col-md-6">
+                            <strong>Request Received</strong>
+
+                            <div class="text-muted">
+                                <%= record.requestReceived || '—' %>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-6">
+                            <strong>Started</strong>
+
+                            <div class="text-muted">
+                                <%= record.started || '—' %>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="mb-3">
+                        <strong>Requesting Agency</strong>
+
+                        <div class="text-muted">
+                            <%= record.requestingAgency || '—' %>
+                        </div>
+                    </div>
+
+
+                    <div class="mb-3">
+                        <strong>Type of Investigation</strong>
+
+                        <div class="text-muted">
+                            <%= record.typeOfInvestigation || '—' %>
+                        </div>
+                    </div>
+
+
+                    <div class="mb-3">
+                        <strong>Hours Spent</strong>
+
+                        <div class="text-muted">
+                            <%= record.hoursSpent || '—' %>
+                        </div>
+                    </div>
+
+
+                    <div class="mb-4">
+
+                        <strong>Actions Taken</strong>
+
+                        <div class="mt-2">
+
+                            <% if (record.actionTaken && record.actionTaken.length > 0) { %>
+
+                                <% record.actionTaken.forEach(action => { %>
+
+                                    <span class="badge bg-info me-2 mb-2">
+                                        <%= action %>
+                                    </span>
+
+                                <% }); %>
+
+                            <% } else { %>
+
+                                <span class="text-muted">
+                                    —
+                                </span>
+
+                            <% } %>
+
+                        </div>
+
+                    </div>
+
+
+                    <h3 class="border-bottom pb-2 mb-4 mt-4">
+                        Software
+                    </h3>
+
+
+                    <div class="mb-3">
+                        <strong>Software Used</strong>
+
+                        <div class="text-muted">
+                            <%= record.softwareUsed || '—' %>
+                        </div>
+                    </div>
+
+
+                    <div class="mb-3">
+                        <strong>License Status</strong>
+
+                        <div class="text-muted">
+                            <%= record.paidOrFree || '—' %>
+                        </div>
+                    </div>
+
+
+                    <div class="mb-3">
+                        <strong>Software Version</strong>
+
+                        <div class="text-muted">
+                            <%= record.softwareVersion || '—' %>
+                        </div>
+                    </div>
+
+
+                    <div class="mb-3">
+                        <strong>Notes</strong>
+
+                        <div class="text-muted">
+                            <%= record.notes || '—' %>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <!-- RIGHT COLUMN -->
+                <div class="col-lg-5">
+
+                    <h3 class="border-bottom pb-2 mb-4">
+                        Outcome
+                    </h3>
+
+
+                    <div class="mb-3">
+                        <strong>Report Complete</strong>
+
+                        <div class="mt-2">
+
+                            <% if (record.reportComplete === 'Yes') { %>
+
+                                <span class="badge bg-success">
+                                    Complete
+                                </span>
+
+                            <% } else { %>
+
+                                <span class="badge bg-warning text-dark">
+                                    Incomplete
+                                </span>
+
+                            <% } %>
+
+                        </div>
+                    </div>
+
+
+                    <div class="mb-3">
+                        <strong>Provided to Investigator</strong>
+
+                        <div class="mt-2">
+
+                            <% if (record.providedToInvestigator === 'Yes') { %>
+
+                                <span class="badge bg-success">
+                                    Yes
+                                </span>
+
+                            <% } else { %>
+
+                                <span class="badge bg-secondary">
+                                    No
+                                </span>
+
+                            <% } %>
+
+                        </div>
+                    </div>
+
+
+                    <div class="mb-3">
+                        <strong>Provided How</strong>
+
+                        <div class="text-muted">
+                            <%= record.providedHow || '—' %>
+                        </div>
+                    </div>
+
+
+                    <div class="mb-3">
+                        <strong>Evidence Stored</strong>
+
+                        <div class="text-muted">
+                            <%= record.evidenceStored || '—' %>
+                        </div>
+                    </div>
+
+
+                    <div class="mb-4">
+                        <strong>Results</strong>
+
+                        <div class="text-muted">
+                            <%= record.results || '—' %>
+                        </div>
+                    </div>
+
+
+                    <h3 class="border-bottom pb-2 mb-4 mt-4">
+                        Kaseware Migration
+                    </h3>
+
+
+                    <div class="mb-3">
+                        <strong>Status</strong>
+
+                        <div class="mt-2">
+
+                            <% if (record.migratedToKaseware) { %>
+
+                                <span class="badge bg-success">
+                                    Migrated
+                                </span>
+
+                            <% } else { %>
+
+                                <span class="badge bg-info">
+                                    Pending
+                                </span>
+
+                            <% } %>
+
+                        </div>
+                    </div>
+
+
+                    <div class="mb-3">
+                        <strong>Kaseware Record ID</strong>
+
+                        <div class="text-muted">
+                            <%= record.kasewareRecordId || '—' %>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Footer Buttons -->
+            <div
+                class="d-flex justify-content-between border-top pt-4 mt-4"
+            >
+
+                <a
+                    href="/records/<%= record._id %>/edit"
+                    class="btn btn-outline-light"
+                >
+                    Edit Record
+                </a>
+
+
+                    <% if (!record.migratedToKaseware) { %>
+
+                        <button
+                            type="button"
+                            class="btn btn-success"
+                            data-bs-toggle="modal"
+                            data-bs-target="#migrationModal"
+                        >
+                            Mark Migrated to Kaseware
+                        </button>
+
+                    <% } %>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Kaseware Migration Modal -->
+<div
+    class="modal fade"
+    id="migrationModal"
+    tabindex="-1"
+    aria-hidden="true"
+>
+
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <h5 class="modal-title">
+                    Mark Migrated to Kaseware
+                </h5>
+
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                ></button>
+
+            </div>
+
+
+            <form
+                action="/records/<%= record._id %>/migration?_method=PATCH"
+                method="POST"
+            >
+
+                <div class="modal-body">
+
+                    <p>
+                        Enter the Kaseware record or case ID
+                        associated with this migrated record.
+                    </p>
+
+                    <div class="mb-3">
+
+                        <label
+                            for="kasewareRecordId"
+                            class="form-label"
+                        >
+                            Kaseware Record ID
+                        </label>
+
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="kasewareRecordId"
+                            name="kasewareRecordId"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="modal-footer">
+
+                    <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal"
+                    >
+                        Cancel
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="btn btn-success"
+                    >
+                        Confirm Migration
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>

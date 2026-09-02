@@ -1,0 +1,19 @@
+body {
+    min-height: 100vh;
+}
+
+.card {
+    border-radius: 10px;
+}
+
+.form-label {
+    font-weight: 600;
+}
+
+textarea {
+    resize: vertical;
+}
+
+h3 {
+    font-size: 1.25rem;
+}
