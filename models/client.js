@@ -11,6 +11,13 @@ const clientSchema = new mongoose.Schema({
         required: true
     },
 
+    caseNumber: {
+        type: String,
+        required: true,
+        trim: true,
+        maxlength: 100
+    },
+
     requestReceived: {
         type: String,
         minlength: 1,
@@ -135,6 +142,8 @@ const Client = mongoose.model('Client', clientSchema);
 const validateClient = (client) => {
     const schema = Joi.object({
         title: Joi.string().min(1).max(500).required(),
+        caseNumber:
+    Joi.string().trim().max(100).required(),
         requestReceived: Joi.string().min(1).max(20).required(),
         started: Joi.string().min(1).max(20).required(),
         requestingAgency: Joi.string().min(1).max(500),

@@ -142,6 +142,7 @@ const updateRecord = async (req, res) => {
             req.params.id,
             {
                 title: req.body.title,
+                caseNumber: req.body.caseNumber,
                 requestReceived: req.body.requestReceived,
                 started: req.body.started,
                 requestingAgency: req.body.requestingAgency || undefined,
@@ -287,58 +288,61 @@ const createClient = async (req, res) => {
 
 
         // Create new MongoDB document
-        const client = new Client({
+ const client = new Client({
 
-            title: req.body.title,
+    title: req.body.title,
 
-            requestReceived:
-                req.body.requestReceived,
+    caseNumber:
+        req.body.caseNumber,
 
-            started:
-                req.body.started,
+    requestReceived:
+        req.body.requestReceived,
 
-            requestingAgency:
-                req.body.requestingAgency,
+    started:
+        req.body.started,
 
-            typeOfInvestigation:
-                req.body.typeOfInvestigation,
+    requestingAgency:
+        req.body.requestingAgency,
 
-            hoursSpent:
-                req.body.hoursSpent,
+    typeOfInvestigation:
+        req.body.typeOfInvestigation,
 
-            actionTaken:
-                 Array.isArray(req.body.actionTaken)
-                     ? req.body.actionTaken
-                     : [req.body.actionTaken],
+    hoursSpent:
+        req.body.hoursSpent,
 
-            softwareUsed:
-                req.body.softwareUsed,
+    actionTaken:
+        Array.isArray(req.body.actionTaken)
+            ? req.body.actionTaken
+            : [req.body.actionTaken],
 
-            paidOrFree:
-                req.body.paidOrFree,
+    softwareUsed:
+        req.body.softwareUsed,
 
-            softwareVersion:
-                req.body.softwareVersion,
+    paidOrFree:
+        req.body.paidOrFree,
 
-            notes:
-                req.body.notes,
+    softwareVersion:
+        req.body.softwareVersion,
 
-            reportComplete:
-                req.body.reportComplete,
+    notes:
+        req.body.notes,
 
-            providedToInvestigator:
-                req.body.providedToInvestigator,
+    reportComplete:
+        req.body.reportComplete,
 
-            providedHow:
-                req.body.providedHow,
+    providedToInvestigator:
+        req.body.providedToInvestigator,
 
-            evidenceStored:
-                req.body.evidenceStored,
+    providedHow:
+        req.body.providedHow,
 
-            results:
-                req.body.results
+    evidenceStored:
+        req.body.evidenceStored,
 
-        });
+    results:
+        req.body.results
+
+});
 
 
         // Save to MongoDB
