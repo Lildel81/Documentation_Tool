@@ -66,6 +66,11 @@ const createSupplementalReport =
             await Client.findById(
                 req.body.forensicRecord
                 );
+            if (!forensicRecord.caseNumber) {
+                return res.status(400).send(
+                    'The selected forensic record does not have a case number.'
+                );
+}
 
             if (!forensicRecord) {
                 return res
