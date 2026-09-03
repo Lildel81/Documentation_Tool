@@ -46,6 +46,16 @@ const validateSupplementalReport = (report) => {
 
     const schema = Joi.object({
 
+        forensicRecord: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Client',
+            required: true
+       },
+ 
+        forensicRecord:
+            Joi.string()
+                .required(),
+                
         caseNumber:
             Joi.string()
                 .trim()

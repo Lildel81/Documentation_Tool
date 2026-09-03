@@ -1,18 +1,23 @@
 const SupplementalReport =
     require('../models/supplementalReport');
-
+const Client = require('../models/client');
 
 const getSupplementalReportForm =
     async (req, res) => {
 
         try {
 
-            res.render(
-                'supplemental-report',
-                {
-                    error: null
-                }
-            );
+            const records = await Client
+               .find()
+               .sort({ requestReceived: -1 });
+
+               res.render(
+               'supplemental-report',
+            {
+                error: null,
+                records
+            }
+        );
 
         } catch (error) {
 
@@ -54,12 +59,25 @@ const createSupplementalReport =
 
             }
 
+            const forensicRecord =
+            await Client.findById(
+                req.body.forensicRecord
+                );
+
+            if (!forensicRecord) {
+                return res
+                .status(404)
+                .send('Forensic record not found');
+            }
 
             const supplementalReport =
                 new SupplementalReport({
 
+                    forensicRecord:
+                        forensicRecord._id,
+
                     caseNumber:
-                        req.body.caseNumber,
+                        forensicRecord.caseNumber,
 
                     reportTitle:
                         req.body.reportTitle,

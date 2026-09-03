@@ -54,13 +54,26 @@
                             Case Number
                         </label>
 
-                        <input
-                            type="text"
-                            class="form-control"
-                            id="caseNumber"
-                            name="caseNumber"
-                            required
-                        >
+                        <select
+                        class="form-select"
+                        id="forensicRecord"
+                        name="forensicRecord"
+                        required
+                    >
+
+                        <option value="">
+                            Select a forensic record...
+                        </option>
+
+                        <% records.forEach(record => { %>
+
+                            <option value="<%= record._id %>">
+                                <%= record.caseNumber %> - <%= record.title %>
+                            </option>
+
+                        <% }) %>
+
+                    </select>
 
                     </div>
 
