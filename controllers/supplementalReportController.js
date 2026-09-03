@@ -49,14 +49,17 @@ const createSupplementalReport =
 
             if (error) {
 
+                const records = await Client
+                    .find()
+                    .sort({ requestReceived: -1 });
+
                 return res.status(400).render(
                     'supplemental-report',
                     {
-                        error:
-                            error.details[0].message
+                        error: error.details[0].message,
+                        records
                     }
                 );
-
             }
 
             const forensicRecord =

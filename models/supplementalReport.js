@@ -1,7 +1,14 @@
 const mongoose = require('mongoose');
 const Joi = require('joi');
 
+
 const supplementalReportSchema = new mongoose.Schema({
+
+    forensicRecord: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Client',
+        required: true
+    },
 
     caseNumber: {
         type: String,
@@ -35,6 +42,7 @@ const supplementalReportSchema = new mongoose.Schema({
 
 });
 
+
 const SupplementalReport =
     mongoose.model(
         'SupplementalReport',
@@ -46,20 +54,8 @@ const validateSupplementalReport = (report) => {
 
     const schema = Joi.object({
 
-        forensicRecord: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Client',
-            required: true
-       },
- 
         forensicRecord:
             Joi.string()
-                .required(),
-                
-        caseNumber:
-            Joi.string()
-                .trim()
-                .max(100)
                 .required(),
 
         reportTitle:
@@ -78,6 +74,7 @@ const validateSupplementalReport = (report) => {
                 .required()
 
     });
+
 
     return schema.validate(report);
 };

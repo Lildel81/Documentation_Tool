@@ -65,13 +65,23 @@
                             Select a forensic record...
                         </option>
 
-                        <% records.forEach(record => { %>
+                        <% if (records && records.length > 0) { %>
 
-                            <option value="<%= record._id %>">
-                                <%= record.caseNumber %> - <%= record.title %>
+                            <% records.forEach(record => { %>
+
+                                <option value="<%= record._id %>">
+                                    <%= record.caseNumber %> - <%= record.title %>
+                                </option>
+
+                            <% }) %>
+
+                        <% } else { %>
+
+                            <option value="" disabled>
+                                No forensic records available
                             </option>
 
-                        <% }) %>
+                        <% } %>
 
                     </select>
 
