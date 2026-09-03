@@ -11,6 +11,7 @@ const methodOverride = require('method-override');
 const session = require('express-session');
 const authRoutes = require('./routes/auth-routes');
 const requireAuth = require('./middleware/auth');
+const supplementalReportRoutes = require('./routes/supplemental-report-routes');
 
 const app = express();
 
@@ -72,6 +73,8 @@ app.use(requireAuth);
 
 // Protected application routes
 app.use('/', clientRoutes);
+
+app.use('/',supplementalReportRoutes);
 
 
 

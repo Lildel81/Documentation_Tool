@@ -1,0 +1,151 @@
+<div class="container-fluid py-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <div>
+            <h2 class="mb-1">
+                Supplemental Report
+            </h2>
+
+            <p class="text-muted mb-0">
+                Create a supplemental narrative for an existing case.
+            </p>
+        </div>
+
+        <a
+            href="/supplemental-reports"
+            class="btn btn-outline-light"
+        >
+            View Supplemental Reports
+        </a>
+
+    </div>
+
+
+    <div class="card shadow">
+
+        <div class="card-body p-4">
+
+            <% if (error) { %>
+
+                <div
+                    class="alert alert-danger"
+                    role="alert"
+                >
+                    <%= error %>
+                </div>
+
+            <% } %>
+
+
+            <form
+                action="/supplemental-report"
+                method="POST"
+            >
+
+                <div class="row g-4">
+
+                    <div class="col-md-4">
+
+                        <label
+                            for="caseNumber"
+                            class="form-label"
+                        >
+                            Case Number
+                        </label>
+
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="caseNumber"
+                            name="caseNumber"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="col-md-5">
+
+                        <label
+                            for="reportTitle"
+                            class="form-label"
+                        >
+                            Report Title
+                        </label>
+
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="reportTitle"
+                            name="reportTitle"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="col-md-3">
+
+                        <label
+                            for="reportDate"
+                            class="form-label"
+                        >
+                            Report Date
+                        </label>
+
+                        <input
+                            type="date"
+                            class="form-control"
+                            id="reportDate"
+                            name="reportDate"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="col-12">
+
+                        <label
+                            for="narrative"
+                            class="form-label"
+                        >
+                            Supplemental Narrative
+                        </label>
+
+                        <textarea
+                            class="form-control"
+                            id="narrative"
+                            name="narrative"
+                            rows="20"
+                            required
+                        ></textarea>
+
+                    </div>
+
+
+                    <div class="col-12">
+
+                        <div class="d-flex justify-content-end">
+
+                            <button
+                                type="submit"
+                                class="btn btn-primary px-4"
+                            >
+                                Save Supplemental Report
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
